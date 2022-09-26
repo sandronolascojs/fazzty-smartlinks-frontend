@@ -20,11 +20,11 @@ export const LinksProvider = ({ children }) => {
   const updateLink = (link) => {
     dispatch({ type: 'UPDATE_LINK', payload: link })
   }
-  const getLinks = async () => {
+  const getLinks = async (page) => {
     try {
-      const response = await getLinksApiEndPoint()
-      const links = response.data
-      dispatch({ type: 'GET_LINKS', payload: links.data })
+      const response = await getLinksApiEndPoint(page)
+      const linksData = response.data
+      dispatch({ type: 'GET_LINKS', payload: linksData.data })
     } catch (err) {
       return err
     }

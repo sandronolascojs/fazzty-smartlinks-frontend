@@ -1,19 +1,27 @@
-import React, { useEffect, useState } from 'react'
-import Loading from '../../../components/Loading/Loading.jsx'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import Navbar from '../../../components/Navbar/Navbar.jsx'
-import TrackCard from '../../../components/TrackCard/TrackCard.jsx'
-import { useLinksContext } from '../../../hooks/useLinksContext.jsx'
+import { loadLinks } from '../../../context/data/linksSlice.js'
+import { getLinksApiEndPoint } from '../../../services/links.services.js'
 
 export default function Dashboard () {
-  const [loading, setLoading] = useState(true)
-  const { linksState, getLinks } = useLinksContext()
+  const fistLoad = async (page) => {
+    try {
+      const response = await getLinksApiEndPoint(page)
+      const links = response.data
+      useDispatch(loadLinks(links))
+    } catch (e) {
+      console.log(e)
+    }
+  }
+  const page = 1
 
   useEffect(() => {
-    const getData = async () => {
-      await getLinks()
+    const load = async () => {
+      await fistLoad(page)
     }
-    getData()
-    setLoading(false)
+    document.title = 'Fazzty - Dashboard'
+    load()
   }, [])
   return (
         <>
@@ -25,19 +33,7 @@ export default function Dashboard () {
         method={'logout'}
         />
           <div className='flex flex-wrap justify-center gap-8 mx-64 py-8'>
-          { loading
-            ? <Loading />
 
-            : linksState.links.map(link => (
-              <TrackCard
-              key={link._id}
-              explicit={link.explicit}
-              images={link.images}
-              name={link.name}
-              artists={link.artists}
-              previewUrl={link.previewUrl.spotify || link.previewUrl.deezer || link.previewUrl.napster }
-              />
-            ))}
           </div>
         </>
   )

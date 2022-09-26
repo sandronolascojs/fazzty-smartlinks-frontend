@@ -35,6 +35,8 @@ export default function Login () {
     navigate('/dashboard')
   }
 
+  document.title = 'Fazzty - Login'
+
   return (
         <main className='flex flex-auto'>
 

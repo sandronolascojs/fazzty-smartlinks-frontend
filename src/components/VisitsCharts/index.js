@@ -1,1 +1,1 @@
-export { default } from './VisitsCharts.jsx'
+export { default } from './VisitsCharts'

@@ -12,13 +12,26 @@ export default function CardAudioPlayer ({ preview }) {
   )
 
   const handlePlay = () => {
+    audioPlayer.current.volume = 0.3
     setPlaying(!playing)
     if (!playing) {
       audioPlayer.current.play()
+
+      const tracks = Array.from(document.getElementsByTagName('audio'))
+      tracks.forEach(function (track) {
+        track.addEventListener('play', (event) => {
+          tracks.forEach(function (track) {
+            if (track !== event.target) {
+              track.pause()
+            }
+          })
+        })
+      })
     } else {
       audioPlayer.current.pause()
     }
   }
+
   const audioPlayer = useRef()
 
   const onPlaying = () => {
@@ -63,4 +76,3 @@ export default function CardAudioPlayer ({ preview }) {
     </div>
   )
 }
-// <input className='bg-zinc-300 w-full appearance-none rounded-xl cursor-pointer range-sm h-1.5' type='range' />

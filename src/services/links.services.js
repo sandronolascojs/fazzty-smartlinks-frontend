@@ -5,9 +5,9 @@ const baseUrl = 'http://localhost:3500/api/v1'
 
 const { token } = getLocalStorageUser()
 
-export const getLinksApiEndPoint = async () => {
+export const getLinksApiEndPoint = async (page) => {
   try {
-    const response = await axios.get(`${baseUrl}/links`, {
+    const response = await axios.get(`${baseUrl}/links?page=${page}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -18,14 +18,10 @@ export const getLinksApiEndPoint = async () => {
   }
 }
 
-export const getLinksPopularEndpoint = async () => {
+export const getLinkSlugApiEndPoint = async (slug) => {
   try {
-    const response = await axios.get(`${baseUrl}/search`, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
-    return response
+    const response = await axios.get(`${baseUrl}/public/${slug}`)
+    return response.data
   } catch (err) {
     return err
   }
