@@ -1,9 +1,9 @@
 export const linksReducer = (state, action) => {
   switch (action.type) {
-    case 'ADD_LINK':
+    case 'ADD_LINKS':
       return {
         ...state,
-        links: [...state.links, action.payload]
+        links: action.payload
       }
     case 'DELETE_LINK':
       return {

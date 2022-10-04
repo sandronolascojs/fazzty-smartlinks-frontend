@@ -35,6 +35,7 @@ export default function VisitsCharts ({ track }) {
       label: 'Visits',
       data: VisitsCounts,
       fill: false,
+      zIndex: 1,
       backgroundColor: 'rgba(53, 162, 235, 0.5)',
       borderColor: 'rgba(53, 162, 235, 0.5)',
       pointBackgroundColor: 'rgba(53, 162, 235, 1)',

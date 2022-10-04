@@ -1,14 +1,10 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { LinkStyle } from './Link.styles'
 
 export default function Link ({ children, href }) {
-  const navigate = useNavigate()
-
-  const handleClick = (e) => {
-    e.preventDefault()
-    navigate(href)
-  }
   return (
-    <a onClick={handleClick} className='font-bold text-zinc-800 cursor-pointer'>{children}</a>
+    <LinkStyle to={href}>
+      {children}
+    </LinkStyle>
   )
 }

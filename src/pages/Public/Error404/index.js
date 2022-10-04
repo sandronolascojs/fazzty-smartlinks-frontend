@@ -1,1 +1,1 @@
-export { default } from './Error404.jsx'
+export { default as Error404 } from './Error404'

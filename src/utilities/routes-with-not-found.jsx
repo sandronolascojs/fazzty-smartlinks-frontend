@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import Error404 from '../pages/public/Error404'
+const Error404 = React.lazy(() => ('../pages/public/Error404'))
 
 export default function RoutesWithNotFound ({ children }) {
   return (

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Outlet, Navigate } from 'react-router-dom'
-import useAuthContext from '../hooks/useAuthContext'
-import { PublicRoutes } from '../models/routes'
+import useAuthContext from '@/hooks/useAuthContext'
+import { PublicRoutes } from '@/models/routes'
 
 export const AuthGuard = () => {
   const { authState } = useAuthContext()

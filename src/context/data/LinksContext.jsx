@@ -1,5 +1,4 @@
 import React, { createContext, useReducer } from 'react'
-import { getLinksApiEndPoint } from '../../services/links.services'
 import { linksReducer } from './linksReducer'
 
 const initialState = {
@@ -20,11 +19,9 @@ export const LinksProvider = ({ children }) => {
   const updateLink = (link) => {
     dispatch({ type: 'UPDATE_LINK', payload: link })
   }
-  const getLinks = async (page) => {
+  const getLinks = (links) => {
     try {
-      const response = await getLinksApiEndPoint(page)
-      const linksData = response.data
-      dispatch({ type: 'GET_LINKS', payload: linksData.data })
+      dispatch({ type: 'GET_LINKS', payload: links })
     } catch (err) {
       return err
     }

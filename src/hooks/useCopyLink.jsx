@@ -1,18 +1,17 @@
 import { useState } from 'react'
 
-export default function useCopyLink () {
+export default function useCopyLink ({ link }) {
   const [copiedMessage, setCopiedMessage] = useState(false)
-  const [shareLink, setShareLink] = useState()
 
   const handleCopy = async () => {
     if ('clipboard' in navigator) {
-      await navigator.clipboard.writeText(shareLink)
+      await navigator.clipboard.writeText(link)
       setCopiedMessage(true)
-      return setTimeout(() => {
+      /* return setTimeout(() => {
         setCopiedMessage(false)
-      }, 2500)
+      }, 2000) */
     }
   }
 
-  return { copiedMessage, setCopiedMessage, setShareLink, handleCopy }
+  return { copiedMessage, setCopiedMessage, handleCopy }
 }
