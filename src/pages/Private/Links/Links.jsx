@@ -4,10 +4,12 @@ import React, { useState, useEffect } from 'react'
 import useGetLinks from '@/hooks/useGetLinks'
 
 // components
-import LinksNoContent from './components/LinksNoContent'
-import LinksWithContent from './components/LinksWithContent'
 import Loading from '@/components/Loading/Loading'
 import Navbar from '@/components/Navbar/Navbar'
+
+// lazy components
+const LinksWithContent = React.lazy(() => import('./components/LinksWithContent'))
+const LinksNoContent = React.lazy(() => import('./components/LinksNoContent'))
 
 export default function Links () {
   const [limit, setLimit] = useState(8)

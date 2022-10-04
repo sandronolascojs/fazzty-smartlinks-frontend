@@ -16,7 +16,7 @@ export default function useGetLinks ({ limit, trackName }) {
         const paginate = paginateData
         setLinks(data)
         setPaginateData(paginate)
-        setLoading(false)
+        return setLoading(false)
       } catch (e) {
         console.log(e)
       }

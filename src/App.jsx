@@ -5,10 +5,10 @@ import { Route } from 'react-router-dom'
 import Loading from './components/Loading/Loading'
 
 // Providers
-import { AuthProvider } from '@/context/auth/authContext.jsx'
-import { LinksProvider } from '@/context/data/linksContext.jsx'
+import { AuthProvider } from '@/context/auth/authContext'
+import { LinksProvider } from '@/context/data/linksContext'
 // Routes Models
-import { PrivateRoutes, PublicRoutes } from '@/models/routes'
+import { PrivateRoutes, PublicRoutes } from '@/config/routes'
 import AuthGuard from '@/guards/auth.guard'
 import RoutesWithNotFound from '@/utilities/routes-with-not-found'
 

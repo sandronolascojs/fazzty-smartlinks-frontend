@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import useAuthContext from '@/hooks/useAuthContext'
 
 // routes model
-import { PrivateRoutes, PublicRoutes } from '@/models/routes'
+import { PrivateRoutes, PublicRoutes } from '@/config/routes'
 
 // utils
 import { getLocalStorageUser } from '@/utilities/localStorage'

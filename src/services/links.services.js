@@ -1,7 +1,9 @@
 import axios from 'axios'
 import { getLocalStorageUser } from '@/utilities'
 
-const baseUrl = 'http://localhost:3500/api/v1'
+import { config } from '@/config/config'
+
+const baseUrl = config.BASE_URL_API
 
 const { token } = getLocalStorageUser()
 
@@ -14,7 +16,11 @@ export const getLinksApiEndPoint = async ({ page = 1, limit = 4, trackName = '' 
     })
     return response.data
   } catch (err) {
-    return err
+    if (err.response.data.code === 401) {
+      localStorage.removeItem('user')
+      return window.location.reload()
+    }
+    return err.response.data
   }
 }
 
@@ -27,6 +33,10 @@ export const getLinkApiEndPoint = async (id) => {
     })
     return response.data
   } catch (err) {
+    if (err.response.data.code === 401) {
+      localStorage.removeItem('user')
+      return window.location.reload()
+    }
     return err.response.data
   }
 }
@@ -40,6 +50,10 @@ export const deleteLinkApiEndPoint = async (id) => {
     })
     return response.data
   } catch (err) {
+    if (err.response.data.code === 401) {
+      localStorage.removeItem('user')
+      return window.location.reload()
+    }
     return err.response.data
   }
 }

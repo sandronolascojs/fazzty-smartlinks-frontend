@@ -1,5 +1,5 @@
 import React from 'react'
-import { PrivateRoutes, PublicRoutes } from '@/models/routes'
+import { PrivateRoutes, PublicRoutes } from '@/config/routes'
 import { useNavigate } from 'react-router-dom'
 
 // hooks
@@ -22,8 +22,10 @@ import {
   TrackCardTitle,
   TrackCardWrapper
 } from './TrackCard.styles'
-import ModalTransparent from '../ModalTransparent/ModalTransparent'
-import CopyClipboardModal from '../CopyClipboardModal/CopyClipboardModal'
+
+// lazy components
+const ModalTransparent = React.lazy(() => import('@/components/ModalTransparent/ModalTransparent'))
+const CopyClipboardModal = React.lazy(() => import('@/components/CopyClipboardModal/CopyClipboardModal'))
 
 export default function TrackCard ({
   id,

@@ -22,7 +22,7 @@ import {
   LoginFormWrapperSvg
 } from './LoginForm.styles'
 import { authLogin } from '@/services/auth.services'
-import { PublicRoutes } from '@/models/routes'
+import { PublicRoutes } from '@/config/routes'
 
 export default function LoginForm () {
   const [data, setData] = useState({

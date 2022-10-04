@@ -1,10 +1,12 @@
 import axios from 'axios'
 
-const baseUrl = 'http://localhost:3500/api/v1/auth'
+import { config } from '@/config/config'
+
+const baseUrl = config.BASE_URL_API
 
 export const authLogin = async ({ email, password }) => {
   try {
-    const response = await axios.post(`${baseUrl}/login`, { email, password })
+    const response = await axios.post(`${baseUrl}/auth/login`, { email, password })
     return response.data
   } catch (err) {
     return err.response.data
