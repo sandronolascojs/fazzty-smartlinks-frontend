@@ -7,9 +7,9 @@ export default function useCopyLink ({ link }) {
     if ('clipboard' in navigator) {
       await navigator.clipboard.writeText(link)
       setCopiedMessage(true)
-      /* return setTimeout(() => {
+      return setTimeout(() => {
         setCopiedMessage(false)
-      }, 2000) */
+      }, 2000)
     }
   }
 

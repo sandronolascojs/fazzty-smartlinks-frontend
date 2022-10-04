@@ -1,5 +1,4 @@
 import React from 'react'
-import Lottie from 'lottie-react'
 
 // lotties
 import animationData from '@/assets/lotties/box-empty.json'
